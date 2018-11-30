@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body form-inline">
+                <label>ID<input type="text" class="form-control" v-model="id"> </label>
+                <label>Name<input type="text" class="form-control" v-model="name"></label>
+                <input type="button" value="添加" class="btn btn-primary" @click="addItem">
+                <label>搜索名称关键字<input type="text" class="form-control" v-model="keywords"></label>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Ctime</th>
+                <th>Ope</th>
+            </thead>
+            <tbody>
+                <tr v-for="item in search(keywords)" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                keywords: '',
+                list: [{
+                        id: 1,
+                        name: '奔驰',
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: '宝马',
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+                addItem() {
+                    var car = {
+                        id: this.id,
+                        name: this.name,
+                        ctime: new Date()
+                    };
+                    this.list.push(car);
+                    this.id = this.name = '';
+                },
+                del(id) {
+                    // 循环遍历寻找需要删除的元素
+                    this.list.some((item, i) => {
+                        if (item.id == id) {
+                            this.list.splice(i, 1);
+                            return true;
+                        }
+                    })
+                },
+                search(keywords) {
+                    var result = [];
+                    // 第一种方法 循环遍历
+                    // this.list.forEach(item => {
+                    //     if (item.name.indexOf(keywords) != -1) {
+                    //         result.push(item);
+                    //     }
+                    // });
+                    //第二种方法 使用   ES6提供的字符串方法以及数组的新方法filter
+                    this.list.filter(item =>{
+                        if(item.name.includes(keywords)){
+                            result.push(item);
+                        }
+                    })
+                    return result;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

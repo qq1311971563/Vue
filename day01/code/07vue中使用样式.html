@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib//vue-2.4.0.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .thin {
+            font-weight: 200;
+        }
+
+        .italic {
+            font-style: initial;
+        }
+
+        .active {
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 :class="['thin']">这是一个很邪恶的H1,猜猜我是谁</h1>
+        <h1 :class="{red:true,thin:true,italic:true,active:true}">这是一个很邪恶的H1,猜猜我是谁</h1>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app', //表示当前我们new的这个vue实例，要控制页面的那个区域
+            data: {
+                message: '欢迎学习vue'
+            }
+        })
+    </script>
+</body>
+
+</html>

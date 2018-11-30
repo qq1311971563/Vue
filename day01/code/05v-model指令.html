@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib//vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <input type="text" :value="message" style="width:100%">
+        <input type="text" v-model:value="message" style="width:100%">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app', //表示当前我们new的这个vue实例，要控制页面的那个区域
+            data: {
+                message: '大家都是好学生对吧，都特别喜欢上班，特别特别喜欢'
+            }
+        })
+    </script>
+</body>
+
+</html>

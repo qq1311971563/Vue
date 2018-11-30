@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib//vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label>ID</label>
+        <input type="text" v-model="id">
+        <label>姓名:</label>
+        <input type="text" v-model="name">
+        <input type="button" value="添加" @click="add">
+        <p v-for="user in listObj">
+            <input type="checkbox" value="{{user.id}}">
+            <label>{{user.id}}:{{user.name}}</label>
+
+        </p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app', //表示当前我们new的这个vue实例，要控制页面的那个区域
+            data: {
+                id: '',
+                name: '',
+                listObj: [{
+                        id: 1,
+                        name: '李白'
+                    },
+                    {
+                        id: 2,
+                        name: '杜甫'
+                    },
+                    {
+                        id: 3,
+                        name: '孟浩然'
+                    },
+                    {
+                        id: 4,
+                        name: '陶渊明'
+                    },
+                    {
+                        id: 5,
+                        name: '郦道元'
+                    }
+                ]
+            },
+            methods: {
+                add() {
+                    this.listObj.push({
+                        id: this.id,
+                        name: this.name
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

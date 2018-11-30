@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VUE 学习</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./lib//vue-2.4.0.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p v-cloak>
+            {{msg}}
+        </p>
+        <p v-text='msg'></p>
+        <div>
+            {{msg2}}
+        </div>
+        <div v-html='msg2'></div>
+        <input type="button" value="按钮" :title="mytitle + '123'" v-on:click="show" />
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello,world',
+                msg2: '<h1>我大我骄傲，不服打我啊</h1>',
+                mytitle: '这是一个自己定义的title'
+            },
+            methods:{//定义方法
+                show:function(){
+                    alert('hello');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
