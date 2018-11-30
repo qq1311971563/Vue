@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com1 v-on:func="show"></com1>
+        <com2></com2>
+    </div>
+    <template id="temp2">
+        <div>
+            <h1>这是子组件</h1>
+            <input type="button" value="我是子组件" @click="myclick">
+        </div>
+    </template>
+    <script>
+        Vue.component('com2', {
+            template: '#temp2',
+            methods: {
+                myclick() {
+                    console.log("子组件说话了");
+                }
+            },
+
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '父组件:我是你爸爸'
+            },
+            methods: {
+                show(data) {
+                    console.log("父组件对子组件说:我是你爸爸" + data);
+                }
+            },
+            components: {
+                com1: {
+                    template: '<input type="button" value="子组件" @click="look">',
+                    methods: {
+                        look() {
+                            console.log("hello");
+                             this.$emit('func','123')
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

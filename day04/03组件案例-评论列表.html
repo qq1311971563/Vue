@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+        <ul class="list-group">
+            <li class="list-group-item"  v-for="item in list" ::key="item.id">
+                <span class="badge">评论人:{{item.user}}</span>
+                {{item.content}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                        id: Date.now(),
+                        user: '李白',
+                        content: '天生我材必有用'
+                    },
+                    {
+                        id: Date.now(),
+                        user: '江小白',
+                        content: '劝君更尽一杯酒'
+                    },
+                    {
+                        id: Date.now(),
+                        user: '白小飞',
+                        content: '我行白,赤橙黄绿青蓝紫的白'
+                    },
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
