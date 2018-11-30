@@ -11,33 +11,37 @@
 
 <body>
     <div id="app">
-            <a href="#" @click.prevent="comName='login'">登录</a>
-            <a href="#" @click.prevent="comName='register'">注册</a>
-            <component :is="comName">
-
-            </component>
+        <a href="#" @click.prevent="comName='login'">登录</a>
+        <a href="#" @click.prevent="comName='register'">注册</a>
+        <component :is="comName"> </component>
+        <input type="text" @mouseleave="level()">
     </div>
     <script>
         var com1 = Vue.extend({
             template: '<h3>这是一个带有数据"{{msg}}"的组件</h3>',
-            data:function(){
+            data: function () {
                 return {
-                    msg:'这是组件里面的数据'
+                    msg: '这是组件里面的数据'
                 }
             }
         })
         Vue.component('com1', com1);
 
-        Vue.component('register',{
-            template:'<h3>注册组件</h3>'
+        Vue.component('register', {
+            template: '<h3>注册组件</h3>'
         })
-        Vue.component('login',{
-            template:'<h3>登录组件</h3>'
+        Vue.component('login', {
+            template: '<h3>登录组件</h3>'
         })
         var vm = new Vue({
-            el:'#app',
-            data:{
-                comName:'login'
+            el: '#app',
+            data: {
+                comName: 'login'
+            },
+            methods:{
+                level(){
+                    console.log("hello");
+                }
             }
         });
     </script>
