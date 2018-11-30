@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-com1></my-com1>
+        <my-com2></my-com2>
+        <login></login>  
+    </div>
+    <template id="temp1">
+        <div>
+            <h2>第二个组件</h2>
+            <span>可以</span>  
+        </div>
+    </template>
+    <script>
+        var com1 = Vue.extend({
+            template: '<h3>这是一个组件</h3>'
+        })
+        Vue.component('myCom1', com1);
+        Vue.component('myCom2',{
+            template:'#temp1'
+        })
+        var vm = new Vue({
+            el:'#app',
+            components:{
+                login:{
+                    template:'<h4>这是一个私有的组件</h4>'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
