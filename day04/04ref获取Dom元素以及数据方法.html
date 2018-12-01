@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点我" @click="say">
+        <input type="button" value="获取ref对象的内容" @click="ref2">
+        <input type="button" value="获取ref映射组件的内容" @click="ref3">
+        <input type="button" value="调用ref映射组件的方法" @click="ref4">
+        <h2 ref="reference">hello</h2>
+        <com1 ref="refer2"></com1>
+    </div>
+    <template id="temp1">
+        <div><span>小包</span>
+        </div>
+    </template>
+    <script>
+        Vue.component('com1', {
+            template: '#temp1',
+            data() {
+                return {
+                    msg: "hello,小包"
+                }
+            },
+            methods:{
+                sonSay(){
+                    console.log("世界的力量");
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                say() {
+                    console.log("ss");
+                },
+                ref2() {
+                    console.log(this.$refs.reference.innerText);
+                },
+                ref3() {
+                    console.log(this.$refs.refer2.msg);
+                },
+                ref4(){
+                    this.$refs.refer2.sonSay();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
