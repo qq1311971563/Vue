@@ -11,6 +11,7 @@ QQ输入法
 JAVA JDK
 NODE.JS
 VUE.JS
+GRADLE
 MYSQL
 GIT hub项目管理工具
 IDEA 开发工具
