@@ -1,6 +1,7 @@
 {
   "name": "webpack-demo1",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.3.1"
-  },
-  "devDependencies": {
-    "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
-  },
-  "description": ""
+  }
 }
